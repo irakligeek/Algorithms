@@ -1,0 +1,43 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Binary Search Algorithm</title>
+</head>
+<body>
+  <script>
+    /*
+    * A popular binary search algorithm implemented in javascript
+    */
+
+    (function(){
+     
+      function binarySearch(arr, target){
+       //sort array
+       arr.sort( function(a,b){ return a - b; });
+       var startIndex = 0, 
+           endIndex = arr.length-1, 
+           middleIndex,
+           currentElement;
+       
+       while( startIndex <= endIndex && arr[middleIndex] != target ){
+          //set current index to middle of the array
+          middleIndex = Math.floor( (startIndex + endIndex)/2 );
+          if (arr[middleIndex] < target){
+            startIndex = middleIndex + 1;
+          }else if( arr[middleIndex] > target ){
+            endIndex = middleIndex - 1;
+          }
+       }
+       //check if number found
+       return arr[middleIndex] == target ? arr[middleIndex] : -1;
+     }
+      //Test
+      console.log(  binarySearch([10, 5, 34, 31, 0, 3], 3) );
+      
+    })();
+
+
+  </script>
+  
+</body>
+</html>
